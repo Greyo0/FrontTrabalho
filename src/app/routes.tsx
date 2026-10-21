@@ -51,6 +51,18 @@ export const router = createBrowserRouter([
         },
       },
       {
+        path: "admin/login",
+        lazy: async () => {
+          const { default: Component } = await import("../pages/AdminLoginPage")
+          return { Component }
+        },
+      },
+      {
+        lazy: async () => {
+          const { default: Component } = await import("../components/ProtecaoAdmin")
+          return { Component }
+        },
+        children: [{
         path: "admin",
         lazy: async () => {
           const { default: Component } = await import(
@@ -79,6 +91,7 @@ export const router = createBrowserRouter([
           },
         ],
       },
+      ]},
       { path: "*", element: <Navigate to="/" replace /> },
     ],
   },

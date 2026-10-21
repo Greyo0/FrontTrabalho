@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { Link, NavLink, Outlet } from "react-router"
+import { Link, NavLink, Outlet, useNavigate } from "react-router"
+import { CHAVE_SESSAO_ADMIN } from "./ProtecaoAdmin"
 import Brand from "./Brand"
 import { Icon } from "./Icons"
 
@@ -15,6 +16,11 @@ const navigation = [
 
 export default function AdminLayout() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const navegar = useNavigate()
+  function sair() {
+    sessionStorage.removeItem(CHAVE_SESSAO_ADMIN)
+    navegar("/admin/login", { replace: true })
+  }
 
   return (
     <div className="min-h-screen bg-[#f7f3fb] text-[#352a57] lg:grid lg:grid-cols-[280px_1fr]">
@@ -70,7 +76,8 @@ export default function AdminLayout() {
           </nav>
         </div>
 
-        <div className="mt-auto rounded-3xl bg-white/10 p-5">
+        <button type="button" onClick={sair} className="mt-auto mb-4 rounded-2xl border border-white/20 px-4 py-3 text-left text-sm font-extrabold text-white hover:bg-white/10">Sair da administração →</button>
+        <div className="rounded-3xl bg-white/10 p-5">
           <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#8f7be8]">
             <Icon name="heart" className="h-5 w-5" filled />
           </span>
