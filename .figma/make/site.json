@@ -1,0 +1,10 @@
+{
+  "description": "Connects potential pet adopters with animals in need by showcasing profiles and adoption details in an engaging, user-friendly interface.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
